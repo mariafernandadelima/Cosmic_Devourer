@@ -52,3 +52,31 @@ document.addEventListener('keyup', (ev)=>{
         monstro.dir_y = 0
     }
 })
+function game_over(){
+    if(monstro.vida <=0){
+        jogar = false
+        som1.pause()
+        som2.play()
+        // música com o jogo parado
+    }
+}
+
+function pontos(){
+    if(lixo_espacial.point(lixo)){
+        lixo_espacial.pts +=1
+    }
+       
+    
+}
+function colisao(){
+    lixo_espacial.forEach((bomba)=>{
+        if(monstro.colid(bomba)){
+            lixo_espacial.splice(lixo_espacial.indexOf(bomba), 1)
+            monstro.pts +=1
+            if(bomba.at == './assets/img/bomba.png'){
+                monstro.vida -= 1
+            }
+            if(bomba.vida == 0){jogar = false}
+        }
+    })
+}
