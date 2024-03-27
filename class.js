@@ -31,6 +31,39 @@ class Obj{
         }
     }
 }
+class Monstro extends Obj{
+    dir_x = 0
+    dir_y = 0
+    pts = 0
+    vida = 3
+
+mov(){
+    this.x += this.dir_x
+    this.y += this.dir_y
+    if(this.x <= 0){
+        this.x =0
+    }else if(this.x >=450){
+        this.x = 450
+    }
+    if(this.y <= 0){
+        this.y =0
+    }else if(this.y >=600){
+        this.y = 600
+    }
+}
+anim(nome){
+    this.tempo += 1
+    if(this.tempo > 12 ){
+        this.tempo = 0
+        this.frame += 1
+    }
+    if(this.frame > 4 ){
+        this.frame = 1
+}
+this.a = "assets/img/" +nome+this.frame+".jpg"
+    }
+}
+
 class Lixo extends Obj{
     vel = Math.random() * (6 - 3) + 3
     mov(){
@@ -47,3 +80,13 @@ class BG extends Obj{
         }
     }
 }
+
+
+class Texto{
+    des_text(texto,x,y,cor,font){
+        des.font = font
+        des.fillStyle = cor
+        des.fillText(texto,x,y)
+    }
+}
+
