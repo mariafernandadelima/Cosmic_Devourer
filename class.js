@@ -31,3 +31,10 @@ class Obj{
         }
     }
 }
+class Lixo extends Obj{
+    vel = Math.random() * (6 - 3) + 3
+    mov(){
+        this.y += this.vel
+    }
+    
+}
