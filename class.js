@@ -20,4 +20,12 @@ mov(){
 }
 
 }
+
+class Texto{
+    des_text(texto,x,y,cor,font){
+        des.font = font
+        des.fillStyle = cor
+        des.fillText(texto,x,y)
+    }
+}
    
