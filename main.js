@@ -62,3 +62,22 @@ let lixo = {
         })
     }
 }
+
+function desenha(){ 
+     
+    if(jogar){
+    BG1.des_obj()
+    BG2.des_obj()
+    BG3.des_obj()
+    BG4.des_obj()    
+    monstro.des_obj()    
+    lixo.des()
+
+    txt_pts.des_text('Pontos:',20,40,'white','30px Times')
+    pts.des_text(monstro.pts,120,40,'white','30px Times')
+    txt_vidas.des_text('Vidas:',380,40,'white','30px Times')
+    n_vidas.des_text(monstro.vida,460,40,'white','30px Times')  
+}else{
+    txt_game.des_text('Game Over', 135,360,'white', '46px Times')
+}
+    }
