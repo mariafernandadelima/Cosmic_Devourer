@@ -20,3 +20,35 @@ som1.loop = true
 som2.volume = 0.7
 
 let jogar = true
+
+document.addEventListener('keydown', (ev)=>{
+    
+    som1.play()
+    if(ev.key === 'ArrowLeft'){
+        monstro.dir_x -=5
+    }
+    if(ev.key === 'ArrowRight'){
+        monstro.dir_x +=5
+    }
+    if(ev.key === 'ArrowUp'){
+        monstro.dir_y -=5
+    } 
+    if(ev.key === 'ArrowDown'){
+        monstro.dir_y +=5
+    }    
+})
+
+document.addEventListener('keyup', (ev)=>{
+    if(ev.key === 'ArrowLeft'){
+       monstro.dir_x = 0
+    }
+    if(ev.key === 'ArrowRight'){
+       monstro.dir_x = 0
+    }
+    if(ev.key === 'ArrowUp'){
+        monstro.dir_y = 0
+    } 
+    if(ev.key === 'ArrowDown'){
+        monstro.dir_y = 0
+    }
+})
