@@ -38,3 +38,12 @@ class Lixo extends Obj{
     }
     
 }
+class BG extends Obj{
+
+    mov(ini,lim){
+        this.y +=2
+        if(this.y > lim){
+            this.y = ini
+        }
+    }
+}
