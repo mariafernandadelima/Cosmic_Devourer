@@ -163,11 +163,12 @@ function desenha(){
     n_vidas.des_text(monstro.vida,460,40,'white','30px Times')  
 }else{
     txt_game.des_text('Game Over', 135,360,'white', '46px Times')
+    setInterval(voltar,4000)
 }
     }
 
-    function voltar(){
-        window.history.back()    
+function voltar(){
+    window.history.back()    
     }
 
 function atualiza(){
@@ -182,7 +183,7 @@ function atualiza(){
     lixo.atual()
     colisao() 
     game_over()
-}
+    }
 }   
 
 function main(){
@@ -196,3 +197,4 @@ main()
 
 
 
+    

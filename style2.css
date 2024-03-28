@@ -2,43 +2,32 @@
     margin: 0;
     padding: 0;
 }
+
 body{
     background-color: #3d44c7;
-    text-align:center;
-    font-size: 40px;
-    /* background-image: url('./assets/img/fundo3.png'); */
 }
 
-div{
-    padding: 0px;
+canvas{
     margin: auto;
-    width: 500px;
-    height: 700px;
-    top: 15px;
-    border-radius: 20px; 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    /* color: #3d44c7; */
-    background-image: url('./assets/img/fundo3.png');
-    
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 20px;
+    background-color: rgb(255, 0, 0);
 }
-
-
-
-.nav-button{
+button{
+    font-size: 20px;
+    background-color: orangered;
+    margin: 20px;
     border: none;
     color: white; 
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  
-}
-
-img{
-    border-radius: 15px;
+    /* justify-content: center;
+    align-items: center; */
 }
