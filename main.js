@@ -21,6 +21,8 @@ som1.loop = true
 som2.volume = 0.7
 
 let jogar = true
+let jogar2 = 1
+let vel = 3
 
 let grupo_bomba = []
 let lixo_espacial = []
@@ -63,7 +65,7 @@ let lixo = {
             lixo_espacial.push(new Lixo(pos_x4,-500,50,50,'./assets/img/maca.png'))
             // console.log(lixo_espacial)
         }
-        if(this.time5 >=220){
+        if(this.time5 >=150){
             this.time5 = 0
             lixo_espacial.push(new Lixo(pos_x5,-500,50,50,'./assets/img/bomba.png'))
             console.log(lixo_espacial)
@@ -79,7 +81,7 @@ let lixo = {
     atual(){
         this.crialixo()
         lixo_espacial.forEach((lixo)=>{
-            lixo.mov()
+            lixo.mov(jogar,vel)
             if(lixo.y >= 710){
                 lixo_espacial.splice(lixo_espacial.indexOf(lixo),1)
             }
@@ -130,60 +132,122 @@ function game_over(){
 function pontos(){
     if(lixo_espacial.point(lixo)){
         lixo_espacial.pts +=1
-    }
-       
-    
+    }     
 }
 function colisao(){
     lixo_espacial.forEach((bomba)=>{
         if(monstro.colid(bomba)){
             lixo_espacial.splice(lixo_espacial.indexOf(bomba), 1)
             monstro.pts +=1
+            console.log(monstro.vida)
+            // console.log(vel)
+            if(monstro.pts >= 15){
+                jogar2 = 2
+                vel = 8
+            }
+            if(monstro.pts >=30){
+                jogar2 = 3
+                vel = 14
+            }
             if(bomba.at == './assets/img/bomba.png'){
                 monstro.vida -= 1
+                if((monstro.vida == 0)&&(jogar2==3)){
+                    jogar2 = 1
+                }
             }
-            if(bomba.vida == 0){jogar = false}
+            
         }
         
     })
 }
-function desenha(){ 
+function desenha(){
+    
+    if(jogar == true){
+        if(jogar2 == 1){
+            BG1.des_obj()
+            BG2.des_obj()
+            BG3.des_obj()
+            BG4.des_obj()    
+            monstro.des_obj()    
+            lixo.des()
+    
+            txt_pts.des_text('Pontos:',20,40,'white','30px Times')
+            pts.des_text(monstro.pts,120,40,'white','30px Times')
+            txt_vidas.des_text('Vidas:',380,40,'white','30px Times')
+            n_vidas.des_text(monstro.vida,460,40,'white','30px Times')  
+        }else if(jogar2 == 2){
+            BG1.des_obj()
+            BG2.des_obj()
+            BG3.des_obj()
+            BG4.des_obj()    
+            monstro.des_obj()    
+            lixo.des()
+    
+            txt_pts.des_text('Pontos:',20,40,'white','30px Times')
+            pts.des_text(monstro.pts,120,40,'white','30px Times')
+            txt_vidas.des_text('Vidas:',380,40,'white','30px Times')
+            n_vidas.des_text(monstro.vida,460,40,'white','30px Times')
+        }else if(jogar2 == 3){
+            BG1.des_obj()
+            BG2.des_obj()
+            BG3.des_obj()
+            BG4.des_obj()    
+            monstro.des_obj()    
+            lixo.des()
+    
+            txt_pts.des_text('Pontos:',20,40,'white','30px Times')
+            pts.des_text(monstro.pts,120,40,'white','30px Times')
+            txt_vidas.des_text('Vidas:',380,40,'white','30px Times')
+            n_vidas.des_text(monstro.vida,460,40,'white','30px Times')
+    }
      
-    if(jogar){
-    BG1.des_obj()
-    BG2.des_obj()
-    BG3.des_obj()
-    BG4.des_obj()    
-    monstro.des_obj()    
-    lixo.des()
-
-    txt_pts.des_text('Pontos:',20,40,'white','30px Times')
-    pts.des_text(monstro.pts,120,40,'white','30px Times')
-    txt_vidas.des_text('Vidas:',380,40,'white','30px Times')
-    n_vidas.des_text(monstro.vida,460,40,'white','30px Times')  
+    
 }else{
     txt_game.des_text('Game Over', 135,360,'white', '46px Times')
     setInterval(voltar,4000)
-}
     }
+}
 
 function voltar(){
     window.history.back()    
     }
 
 function atualiza(){
-    if(jogar){
-        
-    BG1.mov(0,2100)
-    BG2.mov(-700,1400)
-    BG3.mov(-1400,700)
-    BG4.mov(-2100,0) 
-    // monstro.anim('monstro_')   
-    monstro.mov()
-    lixo.atual()
-    colisao() 
-    game_over()
+    if(jogar == true){
+        if(jogar2 == 1){    
+            BG1.mov(0,2100)
+            BG2.mov(-700,1400)
+            BG3.mov(-1400,700)
+            BG4.mov(-2100,0) 
+            // monstro.anim('monstro_')   
+            monstro.mov()
+            lixo.atual()
+            colisao() 
+            game_over()
+        }else if(jogar2 == 2){
+            BG1.mov(0,2100)
+            BG2.mov(-700,1400)
+            BG3.mov(-1400,700)
+            BG4.mov(-2100,0) 
+            // monstro.anim('monstro_')   
+            monstro.mov()
+            lixo.atual()
+            colisao() 
+            game_over()
+        }else if(jogar2 == 3){
+            BG1.mov(0,2100)
+            BG2.mov(-700,1400)
+            BG3.mov(-1400,700)
+            BG4.mov(-2100,0) 
+            // monstro.anim('monstro_')   
+            monstro.mov()
+            lixo.atual()
+            colisao() 
+            game_over()
+        }
     }
+
+    
 }   
 
 function main(){

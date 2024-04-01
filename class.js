@@ -65,9 +65,14 @@ this.a = "assets/img/" +nome+this.frame+".jpg"
 }
 
 class Lixo extends Obj{
-    vel = Math.random() * (6 - 3) + 3
-    mov(){
-        this.y += this.vel
+    mov(jogar, vel){
+        if(jogar == 1){
+            this.y += vel
+        }else if(jogar == 2){
+            this.y += vel 
+        }else if(jogar == 3){
+            this.y += vel 
+        }
     }
     
 }
